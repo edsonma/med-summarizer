@@ -1,0 +1,20 @@
+SYNTHETIC MRI IMAGING REPORT (demo data - not a real patient)
+Patient: Jane Doe    MRN: MRN-0001    Study date: 2026-04-28
+Exam: MRI Lumbar Spine without contrast
+
+TECHNIQUE: Multiplanar, multisequence MRI of the lumbar spine was performed.
+
+FINDINGS:
+  L4-L5: Moderate broad-based disc bulge with mild bilateral facet
+  hypertrophy causing mild-to-moderate central canal narrowing. Mild
+  bilateral neural foraminal narrowing.
+  L5-S1: Small central disc protrusion without significant central canal
+  stenosis. No nerve root impingement.
+  Vertebral body heights are preserved. No suspicious marrow signal.
+  Conus medullaris terminates normally at L1.
+
+IMPRESSION:
+  1. Moderate degenerative disc disease at L4-L5 with mild-to-moderate
+     central canal narrowing.
+  2. No acute fracture or cord compression.
+  Clinical correlation recommended; consider physical therapy referral.

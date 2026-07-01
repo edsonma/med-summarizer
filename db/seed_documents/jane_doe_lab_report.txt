@@ -1,0 +1,21 @@
+SYNTHETIC LABORATORY REPORT (demo data - not a real patient)
+Patient: Jane Doe    MRN: MRN-0001    Collected: 2026-05-12
+
+COMPLETE BLOOD COUNT (CBC)
+  White Blood Cell Count (WBC): 6.2 x10^9/L        (Ref: 4.0-11.0)
+  Hemoglobin (Hgb): 10.8 g/dL                       (Ref: 12.0-15.5)   LOW
+  Hematocrit (Hct): 33.1 %                           (Ref: 36-46)      LOW
+  Platelets: 265 x10^9/L                             (Ref: 150-400)
+
+LIPID PANEL (fasting)
+  Total Cholesterol: 244 mg/dL                       (Ref: <200)       HIGH
+  LDL Cholesterol: 168 mg/dL                         (Ref: <100)       HIGH
+  HDL Cholesterol: 41 mg/dL                          (Ref: >40)
+  Triglycerides: 190 mg/dL                           (Ref: <150)       HIGH
+
+METABOLIC
+  Fasting Glucose: 118 mg/dL                         (Ref: 70-99)      HIGH
+  Creatinine: 0.9 mg/dL                              (Ref: 0.6-1.1)
+
+IMPRESSION: Mild normocytic anemia. Hyperlipidemia with elevated LDL.
+Impaired fasting glucose. Recommend lipid management and repeat CBC in 6 weeks.

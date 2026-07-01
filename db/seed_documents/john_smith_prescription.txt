@@ -1,0 +1,14 @@
+SYNTHETIC PRESCRIPTION RECORD (demo data - not a real patient)
+Patient: John Smith    MRN: MRN-0002    Prescribed: 2026-06-03
+Prescriber: Dr. L. Chen, Family Medicine
+
+ACTIVE MEDICATIONS
+1. Metformin 1000 mg oral tablet - take ONE tablet by mouth twice daily.
+   Indication: type 2 diabetes mellitus. Quantity: 180. Refills: 3.
+2. Lisinopril 10 mg oral tablet - take ONE tablet by mouth once daily.
+   Indication: renal protection / albuminuria. Quantity: 90. Refills: 3.
+3. Empagliflozin 10 mg oral tablet - take ONE tablet by mouth once daily.
+   Indication: type 2 diabetes with renal benefit. Quantity: 90. Refills: 3.
+
+ALLERGIES: No known drug allergies.
+NOTES: Monitor renal function and potassium after starting lisinopril.

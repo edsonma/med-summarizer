@@ -1,0 +1,14 @@
+SYNTHETIC PRESCRIPTION RECORD (demo data - not a real patient)
+Patient: Jane Doe    MRN: MRN-0001    Prescribed: 2026-05-13
+Prescriber: Dr. A. Rivera, Internal Medicine
+
+ACTIVE MEDICATIONS
+1. Atorvastatin 40 mg oral tablet - take ONE tablet by mouth at bedtime daily.
+   Indication: hyperlipidemia (elevated LDL). Quantity: 90. Refills: 3.
+2. Metformin 500 mg oral tablet - take ONE tablet by mouth twice daily with meals.
+   Indication: impaired fasting glucose / prediabetes. Quantity: 180. Refills: 3.
+3. Ferrous sulfate 325 mg oral tablet - take ONE tablet by mouth daily.
+   Indication: iron-deficiency anemia. Quantity: 90. Refills: 1.
+
+ALLERGIES: Penicillin (rash).
+NOTES: Counsel on statin-related myalgia. Recheck lipids and CBC in 6 weeks.

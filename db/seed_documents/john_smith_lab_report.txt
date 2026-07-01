@@ -1,0 +1,17 @@
+SYNTHETIC LABORATORY REPORT (demo data - not a real patient)
+Patient: John Smith    MRN: MRN-0002    Collected: 2026-06-02
+
+DIABETES PANEL
+  Hemoglobin A1c (HbA1c): 8.4 %                      (Ref: <5.7)       HIGH
+  Estimated Average Glucose: 197 mg/dL
+  Fasting Glucose: 156 mg/dL                         (Ref: 70-99)      HIGH
+
+RENAL / ELECTROLYTES
+  Creatinine: 1.2 mg/dL                              (Ref: 0.6-1.3)
+  eGFR: 72 mL/min/1.73m2
+  Potassium: 4.4 mmol/L                              (Ref: 3.5-5.1)
+  Urine Albumin/Creatinine Ratio: 45 mg/g            (Ref: <30)        HIGH
+
+IMPRESSION: Poorly controlled type 2 diabetes mellitus (HbA1c 8.4%).
+Early diabetic nephropathy suggested by mild albuminuria. Intensify
+glycemic control and consider ACE inhibitor for renal protection.
