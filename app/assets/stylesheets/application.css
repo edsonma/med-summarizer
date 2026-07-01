@@ -1,0 +1,102 @@
+/*
+ * Minimal, dependency-free styling for the MedSummarizer prototype UI.
+ *= require_self
+ */
+
+:root {
+  --bg: #0f172a;
+  --panel: #ffffff;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --accent: #0d9488;
+  --accent-dark: #0f766e;
+  --danger: #dc2626;
+  --warn-bg: #fffbeb;
+  --warn-border: #fcd34d;
+  --ok-bg: #ecfdf5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+  line-height: 1.5;
+}
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+.topbar { background: var(--bg); color: #fff; padding: 14px 0; }
+.topbar .wrap { display: flex; align-items: baseline; gap: 16px; }
+.brand { color: #fff; font-weight: 700; font-size: 20px; text-decoration: none; }
+.tag { color: #94a3b8; font-size: 13px; }
+
+main.wrap { padding-top: 24px; padding-bottom: 40px; }
+
+h1 { font-size: 24px; margin: 0 0 4px; }
+h2 { font-size: 18px; margin: 28px 0 12px; }
+.muted { color: var(--muted); }
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+}
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+
+label { display: block; font-size: 13px; font-weight: 600; margin: 10px 0 4px; }
+input[type=text], input[type=date], textarea, select {
+  width: 100%; padding: 9px 10px; border: 1px solid var(--border);
+  border-radius: 8px; font-size: 14px; font-family: inherit; background: #fff;
+}
+textarea { min-height: 120px; resize: vertical; }
+
+.btn {
+  display: inline-block; background: var(--accent); color: #fff; border: 0;
+  padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 14px;
+  cursor: pointer; text-decoration: none; margin-top: 12px;
+}
+.btn:hover { background: var(--accent-dark); }
+.btn-ghost { background: #fff; color: var(--accent-dark); border: 1px solid var(--accent); }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-weight: 600; }
+
+.badge { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.badge-pending { background: #fef9c3; color: #854d0e; }
+.badge-processing { background: #dbeafe; color: #1e40af; }
+.badge-ingested { background: var(--ok-bg); color: #065f46; }
+.badge-failed { background: #fee2e2; color: #991b1b; }
+.badge-ok { background: var(--ok-bg); color: #065f46; }
+.badge-no_evidence { background: #fef9c3; color: #854d0e; }
+.badge-blocked, .badge-error { background: #fee2e2; color: #991b1b; }
+
+.flash { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+.flash-notice { background: var(--ok-bg); color: #065f46; border: 1px solid #a7f3d0; }
+.flash-alert { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+.section { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; margin: 14px 0; }
+.citations { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.cite { display: inline-block; background: #f1f5f9; border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; margin-right: 6px; }
+
+.flags { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 8px; padding: 10px 14px; }
+.flags ul { margin: 6px 0 0; padding-left: 18px; }
+
+.confidence-bar { height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; max-width: 260px; }
+.confidence-fill { height: 100%; background: var(--accent); }
+
+.trace { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+.trace td { vertical-align: top; }
+pre.evidence { white-space: pre-wrap; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; font-size: 12px; overflow-x: auto; }
+.disclaimer { font-size: 12px; color: var(--muted); border-top: 1px dashed var(--border); margin-top: 16px; padding-top: 10px; }
+.footer { color: var(--muted); font-size: 12px; padding-bottom: 30px; }
+.small { font-size: 12px; }
+.right { text-align: right; }

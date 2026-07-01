@@ -1,0 +1,96 @@
+<% content = @summary.content %>
+<p>
+  <%= link_to "&larr; Back".html_safe, (@summary.patient ? patient_path(@summary.patient) : root_path), class: "small muted" %>
+</p>
+
+<h1><%= content["headline"].presence || "Summary" %></h1>
+<p class="muted">
+  <% if @summary.patient %><%= @summary.patient.label %> &middot; <% end %>
+  <span class="badge badge-<%= @summary.status %>"><%= @summary.status %></span>
+  &middot; <%= @summary.model %> (prompt <%= @summary.prompt_version %>)
+</p>
+
+<div class="card">
+  <strong>Clinician question</strong>
+  <p><%= @summary.query %></p>
+
+  <label>Confidence</label>
+  <div class="confidence-bar">
+    <div class="confidence-fill" style="width: <%= ((@summary.confidence || 0) * 100).round %>%"></div>
+  </div>
+  <p class="small muted">
+    <%= @summary.confidence ? "#{(@summary.confidence * 100).round}%" : "n/a" %>
+    &middot; <%= @summary.latency_ms %> ms
+    &middot; <%= @summary.prompt_tokens %>+<%= @summary.completion_tokens %> tokens
+  </p>
+</div>
+
+<% if content["message"].present? %>
+  <div class="card"><p><%= content["message"] %></p></div>
+<% end %>
+
+<% if @summary.sections.any? %>
+  <h2>Summary</h2>
+  <div class="card">
+    <% @summary.sections.each do |section| %>
+      <div class="section">
+        <strong><%= section["title"] %></strong>
+        <p><%= simple_format(section["body"]) %></p>
+        <% if Array(section["citations"]).any? %>
+          <div class="citations">
+            Sources:
+            <% section["citations"].each do |ref| %><span class="cite"><%= ref %></span><% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @summary.flags.any? %>
+  <div class="flags">
+    <strong>Flags</strong>
+    <ul><% @summary.flags.each do |flag| %><li><%= flag %></li><% end %></ul>
+  </div>
+<% end %>
+
+<% if @summary.citations.any? %>
+  <h2>Citations (retrieved evidence)</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Ref</th><th>Type</th><th>Excerpt</th></tr></thead>
+      <tbody>
+        <% @summary.citations.each do |c| %>
+          <tr>
+            <td><span class="cite"><%= c["ref"] %></span></td>
+            <td class="small"><%= c["doc_type"] %></td>
+            <td class="small"><%= c["excerpt"] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
+<% if content["disclaimer"].present? %>
+  <p class="disclaimer"><%= content["disclaimer"] %></p>
+<% end %>
+
+<h2>Trace (observability)</h2>
+<p class="small muted">Every step of the RAG chain is logged. This is the evidence used to diagnose hallucinations and tune prompts.</p>
+<div class="card">
+  <table class="trace">
+    <thead><tr><th>#</th><th>Step</th><th>Status</th><th>ms</th><th>Output</th></tr></thead>
+    <tbody>
+      <% @trace_events.each do |event| %>
+        <tr>
+          <td><%= event.sequence %></td>
+          <td><%= event.step %></td>
+          <td><%= event.status %></td>
+          <td><%= event.latency_ms %></td>
+          <td><%= truncate(event.output.to_json, length: 160) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

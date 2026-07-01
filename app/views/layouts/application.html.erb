@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MedSummarizer &middot; RAG Clinical Assistant</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application" %>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="wrap">
+        <a href="/" class="brand">MedSummarizer</a>
+        <span class="tag">RAG Clinical Document Assistant &middot; gpt-4o-mini + pgvector</span>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <% flash.each do |type, message| %>
+        <div class="flash flash-<%= type == "notice" ? "notice" : "alert" %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </main>
+
+    <footer class="wrap footer">
+      AI-generated summaries are for licensed clinician review only &middot; not a diagnostic device.
+    </footer>
+  </body>
+</html>

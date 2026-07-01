@@ -1,0 +1,76 @@
+<p><%= link_to "&larr; All patients".html_safe, root_path, class: "small muted" %></p>
+<h1><%= @patient.name %></h1>
+<p class="muted">MRN <%= @patient.mrn %></p>
+
+<div class="grid2">
+  <div class="card">
+    <h2 style="margin-top:0">Ask for a summary</h2>
+    <%= form_with url: patient_summaries_path(@patient), method: :post do |f| %>
+      <%= label_tag "summary_query", "Clinical question" %>
+      <%= text_area_tag "summary[query]", nil, id: "summary_query",
+            placeholder: "Summarize this patient's recent lab abnormalities and current medications." %>
+      <%= label_tag "summary_prompt_version", "Prompt version" %>
+      <%= select_tag "summary[prompt_version]",
+            options_for_select([["v2 - hardened (grounded + cited)", "v2"], ["v1 - naive baseline", "v1"]], "v2") %>
+      <%= f.submit "Generate summary", class: "btn" %>
+    <% end %>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">Add a document</h2>
+    <%= form_with model: @document, url: patient_documents_path(@patient), method: :post do |f| %>
+      <%= f.label :doc_type, "Document type" %>
+      <%= f.select :doc_type, Document::DOC_TYPES.map { |t| [t.humanize, t] } %>
+      <%= f.label :document_date, "Document date (optional)" %>
+      <%= f.date_field :document_date %>
+      <%= f.label :file, "Upload PDF / text file" %>
+      <%= f.file_field :file %>
+      <%= f.label :raw_text, "...or paste text" %>
+      <%= f.text_area :raw_text, placeholder: "Paste report text here if you don't have a file." %>
+      <%= f.submit "Upload & ingest", class: "btn" %>
+    <% end %>
+  </div>
+</div>
+
+<h2>Documents</h2>
+<div class="card">
+  <% if @documents.any? %>
+    <table>
+      <thead><tr><th>Type</th><th>File</th><th>Date</th><th>Status</th><th>Chunks</th></tr></thead>
+      <tbody>
+        <% @documents.each do |doc| %>
+          <tr>
+            <td><%= doc.doc_type.humanize %></td>
+            <td class="small muted"><%= doc.filename || "(pasted text)" %></td>
+            <td class="small"><%= doc.document_date&.strftime("%b %d, %Y") || "-" %></td>
+            <td><span class="badge badge-<%= doc.status %>"><%= doc.status %></span></td>
+            <td class="small"><%= doc.child_chunks.size %> child / <%= doc.parent_chunks.size %> parent</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p class="muted">No documents yet.</p>
+  <% end %>
+</div>
+
+<h2>Recent summaries</h2>
+<div class="card">
+  <% if @summaries.any? %>
+    <table>
+      <thead><tr><th>When</th><th>Query</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        <% @summaries.each do |summary| %>
+          <tr>
+            <td class="small muted"><%= summary.created_at.strftime("%b %d %H:%M") %></td>
+            <td><%= truncate(summary.query, length: 60) %></td>
+            <td><span class="badge badge-<%= summary.status %>"><%= summary.status %></span></td>
+            <td class="right"><%= link_to "View", summary_path(summary), class: "cite" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p class="muted">No summaries yet.</p>
+  <% end %>
+</div>
